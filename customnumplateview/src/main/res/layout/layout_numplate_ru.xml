@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="226px"-->
+    <!--android:layout_height="52px"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_margin="96dp"-->
+    <!--android:scaleX="2"-->
+    <!--android:scaleY="2"-->
+    <!--tools:background="@drawable/auto_number">-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvNum"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@null"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_marginLeft="32px"-->
+        <!--tools:text="c 000 cc"/>-->
+
+<!--</LinearLayout>-->
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alPlate"
+    android:layout_width="226px"
+    android:layout_height="52px"
+    tools:background="@drawable/auto_number"
+    >
+
+    <EditText
+        android:id="@+id/tvNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_gravity="center_vertical|left"
+        android:textSize="38px"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="0%"
+        app:layout_aspectRatio="10%"
+        tools:text="c 000 cc"/>
+
+    <EditText
+        android:id="@+id/tvRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textSize="24px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        app:layout_marginRightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        app:layout_aspectRatio="10%"
+        tools:text="CC"/>
+
+    <EditText
+        android:id="@+id/tvMotoSuffix"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:background="@null"
+        android:textSize="0px"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        app:layout_marginRightPercent="7%"
+        app:layout_marginTopPercent="5%"
+        app:layout_aspectRatio="10%"
+        tools:text="CC"/>
+
+</android.support.percent.PercentRelativeLayout>

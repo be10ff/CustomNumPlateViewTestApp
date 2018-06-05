@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alPlate"
+    android:layout_width="91px"
+    android:layout_height="69px"
+    tools:background="@drawable/numplate_moto_normal"
+    >
+
+    <EditText
+        android:id="@+id/tvNum"
+        android:layout_width="48px"
+        android:layout_height="20px"
+        android:gravity="center"
+        android:background="@null"
+        android:layout_x="21px"
+        android:layout_y="4px"
+        android:textSize="18px"
+        tools:text="DDDD"/>
+
+    <EditText
+        android:id="@+id/tvMotoSuffix"
+        android:layout_width="64px"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_x="16px"
+        android:layout_y="40px"
+        android:layout_gravity="center_vertical|left"
+        android:textSize="18px"
+        tools:text="CC"/>
+
+    <EditText
+        android:id="@+id/tvRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textSize="18px"
+        android:layout_x="58px"
+        android:layout_y="40px"
+        tools:text="dd"/>
+
+</AbsoluteLayout>
