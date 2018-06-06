@@ -85,6 +85,7 @@ public class CustomNumPlateView extends LinearLayout {
 
         int length = fullNumberString.length();
 
+        //R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix
         alPlate = v.findViewById(R.id.alPlate);
         etNum = v.findViewById(plate.etNumberId);
         etRegion = v.findViewById(plate.etRegionId);
@@ -94,57 +95,26 @@ public class CustomNumPlateView extends LinearLayout {
             case RU: {
                 int d6 = length > 6 ? 6 : length;
                 int d9 = length > 9 ? 9 : length;
-
                 number = fullNumberString.substring(0, d6);
                 region = fullNumberString.substring(d6, d9);
-                numberMaskedWatcher =  new MaskFormatter("CDDDCC", etNum, "[ABCD]");
+
+                numberMaskedWatcher =  new MaskFormatter("CDDDCC", etNum, plate.regexPattern);
                 etNum.addTextChangedListener(numberMaskedWatcher);
-//                numberPattern = Pattern.compile("[ABCD] [0-9][0-9][0-9] [ABCD][ABCD]");
                 break;
             }
             case RU_MOTO: {
                 int d4 = length > 4 ? 4 : length;
                 int d6 = length > 6 ? 6 : length;
                 int d9 = length > 9 ? 9 : length;
-
                 number = fullNumberString.substring(0, d4);
                 suffix = fullNumberString.substring(d4, d6);
                 region = fullNumberString.substring(d6, d9);
-//                numberPattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-                numberMaskedWatcher =  new MaskFormatter("DDDD", etNum, "[EFGH]");
+
+                numberMaskedWatcher =  new MaskFormatter("CCCC", etNum, plate.regexPattern);
                 etNum.addTextChangedListener(numberMaskedWatcher);
-//                etSuffix.setText(suffix);
                 break;
             }
         }
-
-//        etNum.addTextChangedListener(new TextWatcher() {
-//            private String text;
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(numberPattern.matcher(charSequence).matches()){
-//                    text = charSequence.toString();
-//                } else {
-//                    text = "";
-//                }
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                if(numberPattern.matcher(editable).matches()){
-//                    etNum.setText(text);
-//                } else {
-//                    text = null;
-//                }
-//            }
-//        });
-
 
         background = context.getResources().getDrawable(plate.backgroundId);
         alPlate.setBackgroundDrawable(background);
@@ -155,47 +125,34 @@ public class CustomNumPlateView extends LinearLayout {
         etRegion.setText(region);
     }
 
-//    @Override
-//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//
-//        int desiredWidth = background.getIntrinsicWidth();
-//        int desiredHeight = background.getIntrinsicHeight();
-//
-//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-//        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-//
-//        int width;
-//        int height;
-//
-//        //Measure Width
-//        if (widthMode == MeasureSpec.EXACTLY) {
-//            //Must be this size
-//            width = widthSize;
-//        } else if (widthMode == MeasureSpec.AT_MOST) {
-//            //Can't be bigger than...
-//            width = Math.min(desiredWidth, widthSize);
-//        } else {
-//            //Be whatever you want
-//            width = desiredWidth;
-//        }
-//
-//        //Measure Height
-//        if (heightMode == MeasureSpec.EXACTLY) {
-//            //Must be this size
-//            height = heightSize;
-//        } else if (heightMode == MeasureSpec.AT_MOST) {
-//            //Can't be bigger than...
-//            height = Math.min(desiredHeight, heightSize);
-//        } else {
-//            //Be whatever you want
-//            height = desiredHeight;
-//        }
-//
-//        setMeasuredDimension(width, height);
-//
-//    }
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+        int desiredWidth = background.getIntrinsicWidth();
+        int desiredHeight = background.getIntrinsicHeight();
+
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        float scale = 1;
+
+        if(widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.AT_MOST) {
+            scale = ((float)widthSize)/desiredWidth;
+        } else if(widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.EXACTLY) {
+            scale = ((float)heightSize)/desiredHeight;
+        } else {
+            scale = Math.min(((float)widthSize)/desiredWidth, ((float)heightSize)/desiredHeight);
+        }
+
+        alPlate.setScaleX(scale);
+        alPlate.setScaleY(scale);
+
+        int widthSpec = MeasureSpec.makeMeasureSpec(Math.round(desiredWidth*scale), MeasureSpec.EXACTLY);
+        int heightSpec = MeasureSpec.makeMeasureSpec(Math.round(desiredHeight*scale), MeasureSpec.EXACTLY);
+        super.onMeasure(widthSpec, heightSpec);
+    }
 
     public static class Builder {
         private CustomNumPlateView view;
