@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:minWidth="91px"
     android:minHeight="69px"
-    tools:background="#0000ff">
+    >
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -15,13 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="H,91:69">
+        app:layout_constraintDimensionRatio="H,91:69"
+        android:background="#0000ff">
 
         <AbsoluteLayout
             android:id="@+id/alPlate"
             android:layout_centerInParent="true"
-            tools:scaleY="4"
-            tools:scaleX="4"
+            tools:scaleY="8"
+            tools:scaleX="8"
             android:layout_width="91px"
             android:layout_height="69px"
 

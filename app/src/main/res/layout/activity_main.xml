@@ -9,30 +9,17 @@
 
 
 
-    <!--<numplate.com.abelov.customnumplateview.CustomNumPlateView-->
-        <!--android:id="@+id/npAutoRu"-->
-        <!--android:layout_marginTop="48dp"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
+    <numplate.com.abelov.customnumplateview.CustomNumPlateView
+        android:id="@+id/npAutoRu"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <!--<numplate.com.abelov.customnumplateview.CustomView-->
-        <!--android:layout_marginTop="64dp"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-
-    <!--<numplate.com.abelov.customnumplateview.CustomViewGroup-->
-        <!--android:layout_marginTop="64dp"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
 
     <numplate.com.abelov.customnumplateview.CustomNumPlateView
         android:id="@+id/npMotoRu"
-        android:layout_marginTop="64dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="128dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 

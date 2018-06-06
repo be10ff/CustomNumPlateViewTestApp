@@ -1,8 +1,8 @@
 package numplate.com.abelov.customnumplateview;
 
 public enum NumberPlate {
-    RU(R.layout.layout_numplate_ru, R.drawable.auto_number, "[АВЕКМНОСТУХ]", R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix),
-    RU_MOTO(R.layout.layout_numplate_ru_constrain, R.drawable.numplate_moto_normal, "[ABCD]", R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix),
+    RU(R.layout.layout_numplate_ru_avto, R.drawable.auto_number, "[АВЕКМНОСТУХ]", R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix),
+    RU_MOTO(R.layout.layout_numplate_ru_moto, R.drawable.numplate_moto_normal, "[ABCD]", R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix),
 
     UA(R.layout.layout_numplate_ru, R.drawable.auto_number, "[АВЕIКМНОРСТХ]", R.id.tvNum, R.id.tvRegion, R.id.tvMotoSuffix);
 

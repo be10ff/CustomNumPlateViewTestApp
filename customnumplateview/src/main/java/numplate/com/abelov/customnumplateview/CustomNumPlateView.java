@@ -40,12 +40,6 @@ public class CustomNumPlateView extends LinearLayout {
     private String suffix;
 
     private MaskFormatter numberMaskedWatcher;
-//    private MaskFormatter regionMaskedWatcher;
-//    private MaskFormatter suffixMaskedWatcher;
-
-    private TextWatcher nubmerWatcher;
-
-//    Pattern numberPattern;
 
     public CustomNumPlateView(Context context) {
         super(context);
@@ -98,8 +92,9 @@ public class CustomNumPlateView extends LinearLayout {
                 number = fullNumberString.substring(0, d6);
                 region = fullNumberString.substring(d6, d9);
 
-                numberMaskedWatcher =  new MaskFormatter("CDDDCC", etNum, plate.regexPattern);
-                etNum.addTextChangedListener(numberMaskedWatcher);
+//                numberMaskedWatcher =  new MaskFormatter("CDDDCC", etNum, plate.regexPattern);
+                etNum.addTextChangedListener(new MaskFormatter("CDDDCC", etNum, plate.regexPattern));
+                etRegion.addTextChangedListener(new MaskFormatter("DDD", etRegion, plate.regexPattern));
                 break;
             }
             case RU_MOTO: {
@@ -110,8 +105,10 @@ public class CustomNumPlateView extends LinearLayout {
                 suffix = fullNumberString.substring(d4, d6);
                 region = fullNumberString.substring(d6, d9);
 
-                numberMaskedWatcher =  new MaskFormatter("CCCC", etNum, plate.regexPattern);
-                etNum.addTextChangedListener(numberMaskedWatcher);
+//                numberMaskedWatcher =  new MaskFormatter("CCCC", etNum, plate.regexPattern);
+                etNum.addTextChangedListener(new MaskFormatter("DDDD", etNum, plate.regexPattern));
+                etRegion.addTextChangedListener(new MaskFormatter("DDD", etRegion, plate.regexPattern));
+                etSuffix.addTextChangedListener(new MaskFormatter("CC", etSuffix, plate.regexPattern));
                 break;
             }
         }
@@ -149,8 +146,8 @@ public class CustomNumPlateView extends LinearLayout {
         alPlate.setScaleX(scale);
         alPlate.setScaleY(scale);
 
-        int widthSpec = MeasureSpec.makeMeasureSpec(Math.round(desiredWidth*scale), MeasureSpec.EXACTLY);
-        int heightSpec = MeasureSpec.makeMeasureSpec(Math.round(desiredHeight*scale), MeasureSpec.EXACTLY);
+        int widthSpec = MeasureSpec.makeMeasureSpec(Math.round(scale*desiredWidth), MeasureSpec.EXACTLY);
+        int heightSpec = MeasureSpec.makeMeasureSpec(Math.round(scale*desiredHeight), MeasureSpec.EXACTLY);
         super.onMeasure(widthSpec, heightSpec);
     }
 

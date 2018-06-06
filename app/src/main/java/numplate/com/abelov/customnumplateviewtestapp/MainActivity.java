@@ -8,21 +8,21 @@ import numplate.com.abelov.customnumplateview.NumberPlate;
 
 public class MainActivity extends AppCompatActivity {
 
-//    CustomNumPlateView npAutoRu;
+    CustomNumPlateView npAutoRu;
     CustomNumPlateView npMotoRu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        npAutoRu = findViewById(R.id.npAutoRu);
+        npAutoRu = findViewById(R.id.npAutoRu);
         npMotoRu = findViewById(R.id.npMotoRu);
 
 
-//        new CustomNumPlateView.Builder(npAutoRu)
-//                .setType(NumberPlate.RU)
-//                .setNum("A008XM177")
-//                .build();
+        new CustomNumPlateView.Builder(npAutoRu)
+                .setType(NumberPlate.RU)
+                .setNum("A008XM177")
+                .build();
 
         new CustomNumPlateView.Builder(npMotoRu)
                 .setType(NumberPlate.RU_MOTO)
